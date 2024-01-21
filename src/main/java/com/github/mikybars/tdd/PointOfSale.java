@@ -11,13 +11,7 @@ class PointOfSale {
   }
 
   public void onBarcodeReceived(String barcode) {
-    if ("12345\n".equals(barcode)) {
-      String price = productCatalog.getPrice(barcode);
-      display.displayText(price);
-    } else if ("12346\n".equals(barcode)) {
-      String price = productCatalog.getPrice(barcode);
-      display.displayText(price);
-    }
+    String price = productCatalog.getPrice(barcode);
+    display.displayText(price);
   }
-
 }
