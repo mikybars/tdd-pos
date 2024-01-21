@@ -17,11 +17,6 @@ class ProductCatalogMock extends ProductCatalog {
 
   @Override
   public String getPrice(String barcode) {
-    try {
-      new ProductId(barcode);
-      return prices.getOrDefault(barcode, "Product not found");
-    } catch (InvalidProductId e) {
-      return "Invalid product id";
-    }
+    return prices.getOrDefault(barcode, "Product not found");
   }
 }
