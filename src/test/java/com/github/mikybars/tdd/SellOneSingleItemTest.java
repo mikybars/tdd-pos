@@ -33,4 +33,11 @@ class SellOneSingleItemTest {
 
     assertEquals("Product not found", display.lastTextDisplayed());
   }
+
+  @Test
+  void displayInvalidProductIdentifier() {
+    pos.onBarcodeReceived("should not be here");
+
+    assertEquals("Invalid product id", display.lastTextDisplayed());
+  }
 }
