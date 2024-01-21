@@ -3,16 +3,21 @@ package com.github.mikybars.tdd;
 class PointOfSale {
 
   private final Display display;
+  private final ProductCatalog productCatalog;
 
-  PointOfSale(Display display) {
+  PointOfSale(Display display, ProductCatalog productCatalog) {
     this.display = display;
+    this.productCatalog = productCatalog;
   }
 
   public void onBarcodeReceived(String barcode) {
     if ("12345\n".equals(barcode)) {
-      display.displayText("$11.45");
+      String price = productCatalog.getPrice(barcode);
+      display.displayText(price);
     } else if ("12346\n".equals(barcode)) {
-      display.displayText("$8.95");
+      String price = productCatalog.getPrice(barcode);
+      display.displayText(price);
     }
   }
+
 }
