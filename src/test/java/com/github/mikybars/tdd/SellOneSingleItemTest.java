@@ -11,8 +11,8 @@ class SellOneSingleItemTest {
 
   Display display = new Display();
   ProductCatalog productCatalog = new ProductCatalogMock(Map.of(
-      "12345\n", "$11.45",
-      "12346\n", "$8.95"
+      new ProductId("12345\n"), "$11.45",
+      new ProductId("12346\n"), "$8.95"
   ));
   PointOfSale pos = new PointOfSale(display, productCatalog);
 

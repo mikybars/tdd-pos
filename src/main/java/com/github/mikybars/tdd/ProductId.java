@@ -1,8 +1,8 @@
 package com.github.mikybars.tdd;
 
-class ProductId {
+record ProductId(String barcode) {
 
-  public ProductId(String barcode) {
+  ProductId {
     if (barcode.equals("should not be here")) {
       throw new InvalidProductId();
     }

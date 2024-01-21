@@ -11,7 +11,11 @@ class PointOfSale {
   }
 
   public void onBarcodeReceived(String barcode) {
-    String price = productCatalog.getPrice(barcode);
-    display.displayText(price);
+    try {
+      String price = productCatalog.getPrice(new ProductId(barcode));
+      display.displayText(price);
+    } catch (InvalidProductId e) {
+      display.displayText("Invalid product id");
+    }
   }
 }
