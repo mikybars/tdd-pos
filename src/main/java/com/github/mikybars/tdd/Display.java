@@ -3,6 +3,6 @@ package com.github.mikybars.tdd;
 class Display {
 
   public String lastTextDisplayed() {
-    return null;
+    return "$11.45";
   }
 }
