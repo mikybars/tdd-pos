@@ -15,4 +15,11 @@ class SellOneSingleItemTest {
 
     assertEquals("$11.45", display.lastTextDisplayed());
   }
+
+  @Test
+  void displayPriceTagForAnotherBarcodeReceived() {
+    pos.onBarcodeReceived("12346\n");
+
+    assertEquals("$8.95", display.lastTextDisplayed());
+  }
 }
