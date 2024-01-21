@@ -12,6 +12,6 @@ class ProductCatalogMock extends ProductCatalog {
 
   @Override
   public String getPrice(String barcode) {
-    return prices.get(barcode);
+    return prices.getOrDefault(barcode, "Product not found");
   }
 }
