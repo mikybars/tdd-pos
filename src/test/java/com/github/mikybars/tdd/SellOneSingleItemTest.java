@@ -3,6 +3,7 @@ package com.github.mikybars.tdd;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,5 +25,12 @@ class SellOneSingleItemTest {
     pos.onBarcodeReceived(barcode);
 
     assertEquals(expectedPrice, display.lastTextDisplayed());
+  }
+
+  @Test
+  void displayProductNotFound() {
+    pos.onBarcodeReceived("99999\n");
+
+    assertEquals("Product not found", display.lastTextDisplayed());
   }
 }
