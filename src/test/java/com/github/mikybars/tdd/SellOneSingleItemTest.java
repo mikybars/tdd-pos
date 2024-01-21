@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class SellOneSingleItemTest {
 
   Display display = new Display();
-  PointOfSale pos = new PointOfSale();
+  PointOfSale pos = new PointOfSale(display);
 
   @Test
   void displayPriceTagForBarcodeReceived() {
