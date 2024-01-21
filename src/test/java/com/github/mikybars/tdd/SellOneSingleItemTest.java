@@ -3,7 +3,8 @@ package com.github.mikybars.tdd;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class SellOneSingleItemTest {
 
@@ -14,17 +15,14 @@ class SellOneSingleItemTest {
   ));
   PointOfSale pos = new PointOfSale(display, productCatalog);
 
-  @Test
-  void displayPriceTagForBarcodeReceived() {
-    pos.onBarcodeReceived("12345\n");
+  @ParameterizedTest
+  @CsvSource(value = {
+      "'12345\n', $11.45",
+      "'12346\n', $8.95",
+  })
+  void displayPriceTagForBarcodeReceived(String barcode, String expectedPrice) {
+    pos.onBarcodeReceived(barcode);
 
-    assertEquals("$11.45", display.lastTextDisplayed());
-  }
-
-  @Test
-  void displayPriceTagForAnotherBarcodeReceived() {
-    pos.onBarcodeReceived("12346\n");
-
-    assertEquals("$8.95", display.lastTextDisplayed());
+    assertEquals(expectedPrice, display.lastTextDisplayed());
   }
 }
